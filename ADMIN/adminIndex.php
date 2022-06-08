@@ -4,10 +4,10 @@
     <meta http-equiv="refresh" content="0;url=pages/index.html">
     <title>Startmin</title>
     <script language="javascript">
-        window.location.href = "pages/index.html"
+        window.location.href = "pages/adminIndex.php";
     </script>
 </head>
 <body>
-<a href="pages/index.html">Go to Demo</a>
+<a href="pages/adminIndex.php">Go to Demo</a>
 </body>
 </html>
