@@ -1,4 +1,4 @@
-<?php include 'adminHeader.inc.php';?>
+<?php include 'adminHeader.php';?>
 
             <div id="page-wrapper">
                 <div class="container-fluid">
@@ -152,9 +152,9 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-<?php include 'adminFooter.inc.php';?>
+<?php include 'adminFooter.php';?>
         
-        <script>
+        <!-- <script>
             // tooltip demo
             $('.tooltip-demo').tooltip({
                 selector: "[data-toggle=tooltip]",
@@ -163,7 +163,7 @@
 
             // popover demo
             $("[data-toggle=popover]").popover()
-        </script>
+        </script> -->
 
     </body>
 </html>

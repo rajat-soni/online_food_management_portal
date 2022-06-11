@@ -1,36 +1,39 @@
-<?php include 'adminHeader.inc.php';?>
-
-
-        <div class="container">
+<?PHP include "adminHeader.php";?>        <!-- Page Content -->
+    <div id="page-wrapper"> 
+        <div class="container" style="margin-top:100px;">
             <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <div class="login-panel panel panel-default">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="panel panel-warning ">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Please Sign In</h3>
+                            Login
                         </div>
                         <div class="panel-body">
-                            <form role="form">
+                            <form action="loginData.php" method = "post">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                        <input class="form-control" placeholder="E-mail" name="admin_email"  autofocus required>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                        <input class="form-control" placeholder="Password" name="admin_password"  value="" required>
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                        </label>
-                                    </div>
-                                    <!-- Change this to a button or input when using this as a form -->
-                                    <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                    
+                                        <!-- Change this to a button or input when using this as a form -->
+                                    <input type = "submit" name = "submit" class="btn btn-lg btn-success btn-block">
+                                    <p class="text-warning"></p>
                                 </fieldset>
                             </form>
                         </div>
+                        <div class="panel-footer">
+                        Panel Footer
+                        </div>
                     </div>
                 </div>
+                <div class="col-md-3"></div>
             </div>
         </div>
+    </div>    
+        <!-- /#wrapper -->
 
-<?php include 'adminFooter.inc.php';?>
-      
+        <!-- jQuery -->
+        <?php require "adminFooter.php";?>

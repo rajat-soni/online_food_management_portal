@@ -1,3 +1,12 @@
+<?php 
+session_start(); 
+include '../customFunction/function.php';
+// if(!isset($_SESSION['is_ADMIN_LOGIN'])){
+//    redirect('login.php');
+// }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,15 +20,20 @@
 
         <!-- Bootstrap Core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <!-- CSS only -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
 
         <!-- MetisMenu CSS -->
         <link href="../css/metisMenu.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
         <link href="../css/startmin.css" rel="stylesheet">
+        <link href="../css/custom.css" rel="stylesheet">
+
 
         <!-- Custom Fonts -->
         <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href = "//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,7 +79,7 @@
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="adminIndex.php">Startmin</a>
+                    <a class="navbar-brand" href="adminIndex.php">Dashboard</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -76,7 +90,7 @@
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="#"><i class="fa fa-home fa-fw"></i> Website</a></li>
+                    <li><a href="#"><i class="fa fa-home fa-fw"></i>OrderManagementPortal</a></li>
                 </ul>
 
                 <ul class="nav navbar-right navbar-top-links">
@@ -134,6 +148,7 @@
                             </li>
                         </ul>
                     </li>
+                    <?php if(isset($_SESSION['is_ADMIN_LOGIN'])){?>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
@@ -144,8 +159,9 @@
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
+                            <?php }?>
                         </ul>
                     </li>
                 </ul>
@@ -166,22 +182,34 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="adminIndex.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a  href="adminIndex.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="flot.html">Flot Charts</a>
+                                        <a href="flot.php">Flot Charts</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html">Morris.js Charts</a>
+                                        <a href="morris.php">Morris.js Charts</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                                <a href="#"><i class="fa fa-fw" aria-hidden="true" title="Copy to use angle-double-down"></i>CategoryMaster<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="addCate.php">addCategory</a>
+                                    </li>
+                                    <li>
+                                        <a href="showCate.php">showCategroy</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <li>
+                                <a href="tables.php"><i class="fa fa-table fa-fw"></i> Tables</a>
                             </li>
                             <li>
                                 <a href="forms.php"><i class="fa fa-edit fa-fw"></i> Forms</a>
@@ -190,7 +218,7 @@
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="panels-wells.html">Panels and Wells</a>
+                                        <a href="panels-wells.php">Panels and Wells</a>
                                     </li>
                                     <li>
                                         <a href="buttons.php">Buttons</a>
@@ -199,7 +227,7 @@
                                         <a href="notifications.php">Notifications</a>
                                     </li>
                                     <li>
-                                        <a href="typography.html">Typography</a>
+                                        <a href="typography.php">Typography</a>
                                     </li>
                                     <li>
                                         <a href="icons.php"> Icons</a>
@@ -243,12 +271,16 @@
                             <li class="active">
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
-                                    <li>
-                                        <a class="active" href="blank.php">Blank Page</a>
-                                    </li>
+                                <?php if(!isset($_SESSION['is_ADMIN_LOGIN'])){?>
                                     <li>
                                         <a href="login.php">Login Page</a>
                                     </li>
+                                 <?php 
+                                }else{ ?>
+                                    <li>
+                                        <a href="logout.php">Logout</a>
+                                    </li>
+                                    <?php }?>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>

@@ -1,5 +1,10 @@
 
-<?php require "adminHeader.php"; ?>
+<?php require "adminHeader.php";
+if(!isset($_SESSION['is_ADMIN_LOGIN'])){
+       redirect('login.php');
+ }	 
+      
+?>
             <div id="page-wrapper">
                 <div class="container-fluid">
                     <div class="row">

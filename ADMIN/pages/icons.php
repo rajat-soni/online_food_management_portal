@@ -1,4 +1,4 @@
-<?php include 'adminHeader.inc.php';?>
+<?php include 'adminHeader.php';?>
 
 
             <div id="page-wrapper">
@@ -5053,6 +5053,6 @@
         </div>
         <!-- /#wrapper -->
 
-<?php include 'adminFooter.inc.php';?>
+<?php include 'adminFooter.php';?>
       
 

@@ -1,4 +1,4 @@
-<?php include 'adminHeader.inc.php';?>
+<?php include 'adminHeader.php';?>
 
             <div id="page-wrapper">
                 <div class="container-fluid">
@@ -311,5 +311,5 @@
         </div>
         <!-- /#wrapper -->
 
-<?php include 'adminFooter.inc.php';?>
+<?php include 'adminFooter.php';?>
       
