@@ -151,7 +151,7 @@ include '../customFunction/function.php';
                     <?php if(isset($_SESSION['is_ADMIN_LOGIN'])){?>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-user fa-fw"></i> secondtruth <b class="caret"></b>
+                            <i class="fa fa-user fa-fw"></i> <?php echo $_SESSION['ADMIN_NAME'];?> <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -159,8 +159,15 @@ include '../customFunction/function.php';
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <?php if(!isset($_SESSION['is_ADMIN_LOGIN'])){?>
+                            <li><a href="login.php"><i class="fa fa-sign-out fa-fw"></i>login</a>
                             </li>
+                            <?php 
+                                }else{ ?>
+                                    <li>
+                                        <a href="logout.php">Logout</a>
+                                    </li>
+                                    <?php }?>
                             <?php }?>
                         </ul>
                     </li>
@@ -239,37 +246,21 @@ include '../customFunction/function.php';
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Delivery Boy Master<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Second Level Item</a>
+                                        <a href="addBoys.php">Add New boys</a>
                                     </li>
                                     <li>
-                                        <a href="#">Second Level Item</a>
+                                        <a href="showBoys.php">Show Delevery boys</a>
                                     </li>
-                                    <li>
-                                        <a href="#">Third Level <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                        </ul>
-                                        <!-- /.nav-third-level -->
-                                    </li>
+                                   
+                                   
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li class="active">
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+                                <!-- <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a> -->
                                 <ul class="nav nav-second-level">
                                 <?php if(!isset($_SESSION['is_ADMIN_LOGIN'])){?>
                                     <li>

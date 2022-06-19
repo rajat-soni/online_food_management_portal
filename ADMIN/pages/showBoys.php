@@ -4,70 +4,61 @@
     <div id="page-wrapper">
         <?php
      
-    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['cate_id']) && $_GET['cate_id']>0){
+    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['boy_id']) && $_GET['boy_id'] > 0 ){
         $type = $_GET['type'];
-        $id = $_GET['cate_id'];
-        $sql = " DELETE FROM `or_category_tbl` WHERE `category_id` = '$id' ";
+        $id = $_GET['boy_id'];
+        $row = array();
+        $sql = " DELETE FROM `or_delivery_boy_tbl` WHERE `de_boy_id` = '$id' ";
         $mysql = $conn->query($sql) or die('error in sql');
         if($mysql->num_rows > 0){
-            redirect('showCate.php');
+            redirect('showBoys.php');
         }
     
   
     } 
-    // if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['cate_id']) && $_GET['cate_id']>0){
-
-    //     $type = $_GET['type'];
-    //     $id = $_GET['cate_id'];
-    //     $sql = " DELETE FROM `or_category_tbl` WHERE `category_id` = '$id' ";
-    //     $mysql = $conn->query($sql) or die('error in sql');
-    //     if($check = $mysql->num_rows > 0){
-    //        redirect('showCate.php');
-    //     }
-    // }
-    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['category_id']) && $_GET['category_id']>0){
+ 
+    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['boys_id']) && $_GET['boys_id']>0){
     
         $type = $_GET['type'];
-        $cate_id = $_GET['category_id'];
+        $boys_id = $_GET['boys_id'];
         if($type == "active" || $type == "deactive"){
            
            $status = 1;
             if($type == "deactive"){
                 $status = 0; 
             }
-               $sql = " UPDATE `or_category_tbl` SET `category_status`= '$status'  WHERE `category_id` = '$cate_id' ";
-            $mysql = $conn->query($sql) or die("sql not working");
-          redirect('showCate.php');
+               $updatesql = " UPDATE `or_delivery_boy_tbl` SET `boy_status`= '$status'  WHERE `de_boy_id` = '$boys_id' ";
+            $mysql = $conn->query($updatesql) or die("sql not working");
+            redirect('showBoys.php');
         }else{
             echo "type not get";
         }
     }
 
 
-    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['cate_id']) && $_GET['cate_id']>0){
+    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['boy_id']) && $_GET['boy_id']>0){
         $type = $_GET['type'];
-        $id = $_GET['cate_id'];
-        $sql = " SELECT * FROM  `or_category_tbl` WHERE `category_id` = '$id' ";
+        $id = $_GET['boy_id'];
+        $sql = " SELECT * FROM  `or_delivery_boy_tbl` WHERE `de_boy_id` = '$id' ";
         $mysql = $conn->query($sql) or die('error in sql');
         if($mysql->num_rows > 0){
-            ?>
             
-            <?php 
         }
     }
     
   
 
 
-$query = "SELECT * FROM `or_category_tbl` order by `order_number` ";
+$query = "SELECT * FROM `or_delivery_boy_tbl` ";
 $mysql = $conn->query($query) or die('error in sql table');
 $row = array();
+
 ?>
 
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Category Master &nbsp; &nbsp;<span style="float:right; background-color:light;"><a href="addCate.php">Add Category</a><span></h1>
+                            <h1 class="page-header">Deleivery Boys Master &nbsp; &nbsp;<span style="float:right; background-color:light;"><a href="addBoys.php">Add  Delivery Boys</a><span></h1>
                         </div>
                       
                     </div>
@@ -76,7 +67,7 @@ $row = array();
                         <div class="col-lg-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                               Category  Table
+                            Delivery Boys Master
                                 </div>
                                 
                                 <!-- /.panel-heading -->
@@ -86,9 +77,9 @@ $row = array();
                                             <thead>
                                                 <tr>
                                                     <th>S.No</th>
-                                                    <th>Cate_name</th>
-                                                    <th>Order_no</th>
-                                                    <!-- <th>Cate_status</th> -->
+                                                    <th>Boy_name</th>
+                                                    <th>Boy_mobile</th>
+                                                    <th>Cate_email</th>
                                                     <!-- <th>Add_on</th> -->
                                                     <th>Action</th>
                                                 </tr>
@@ -101,19 +92,20 @@ $row = array();
                                                        
                                                 <tr class="odd gradeX">
                                                 <td style= "width:20%;"><?php echo $i;?></td>
-                                                    <td style= "width:30%;"><?php echo $row['category_name'];?></td>
-                                                    <td style= "width:30%;"><?php echo $row['order_number'];?></td>
+                                                    <td style= "width:20%;"><?php echo $row['boy_name'];?></td>
+                                                    <td style= "width:20%;"><?php echo $row['mobile'];?></td>
+                                                    <td style= "width:20%;"><?php echo $row['boy_email'];?></td>
                                                     
-                                                    <td class="center " style= "width:20%;"><a href= "?cate_id=<?php echo $row['category_id'];?>&type= delete"><i class="fa fa-fw" aria-hidden="true" title="Copy to use close" style = "font-size:20px;"></i></a> &nbsp;
+                                                    <td class="center " style= "width:40%;"><a href="?boy_id=<?php echo $row['de_boy_id'];?>&type= delete"><i class="fa fa-fw" aria-hidden="true" title="Copy to use close" style = "font-size:20px;"></i></a> &nbsp;
 
-                                                  <a href= "addCate.php?category_id=<?php echo $row['category_id'];?>"><i class="fa fa-fw" aria-hidden="true" title="Copy to use pencil-square-o" style = "font-size:20px;"></i></a> &nbsp;
+                                                  <a href= "addBoys.php?boys_id=<?php echo $row['de_boy_id'];?>"><i class="fa fa-fw" aria-hidden="true" title="Copy to use pencil-square-o" style = "font-size:20px;"></i></a> &nbsp;
                                                   
-                                                   <?php if($row['category_status'] == 1){?>
+                                                   <?php if($row['boy_status'] == 1){?>
 
-                                                   <a href= "?category_id=<?php echo $row['category_id'];?>&type=deactive"><i class="fa fa-fw" aria-hidden="true" title="Make it deactive" style="font-size:20px;"></i></a> &nbsp;
+                                                   <a href= "?boys_id=<?php echo $row['de_boy_id'];?>&type=deactive"><i class="fa fa-fw" aria-hidden="true" title="Make it deactive" style="font-size:20px;"></i></a> &nbsp;
                                                   
                                                   <?php }else{?>
-                                                   <a href= "?category_id=<?php echo $row['category_id'];?>&type=active" class=""><i class="fa fa-fw" aria-hidden="true" title="Make is active" style="font-size:20px;" ></i></a></span>
+                                                   <a href= "?boys_id=<?php echo $row['de_boy_id'];?>&type=active" class=""><i class="fa fa-fw" aria-hidden="true" title="Make is active" style="font-size:20px;" ></i></a></span>
                                                   
                                                 <?php }?>
                                                 </td>
@@ -144,7 +136,6 @@ $row = array();
                 <!-- /.container-fluid -->
             </div>
             <!-- /#page-wrapper -->
-
         </div>
         <!-- /#wrapper -->
 <?php require "adminFooter.php";?>
