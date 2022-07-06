@@ -2,9 +2,12 @@
 
 <?PHP include "adminHeader.php";
 require '../dbConfig/dbConfig.php';
+print_r($_SERVER);
 $cate_name  = '';
 $order_number = '';
 $cate_status = '';
+$msg = '';
+
 if(isset($_GET['category_id']) && $_GET['category_id'] > 0){
     $cate_id = $_GET['category_id'];
     print_r($cate_id);
@@ -17,32 +20,27 @@ if(isset($_GET['category_id']) && $_GET['category_id'] > 0){
     print_r($cate_status);
     
     
+}
 
 
-
-if(isset($_POST['submit'])){
-     	    
-		
-    $cate_name = $conn->real_escape_string($_POST['cate_name']);
-    $order_number = $conn->real_escape_string($_POST['order_number']);
-    $cate_status = $conn->real_escape_string($_POST['category_status']);
-    $add_on = date(`y-m-d h:i:s`);
-
-       if($cate_id == ''){
-        $checkSql = "select * from  `or_category_tbl` where `category_name` = '$cate_name' ";
-       }else{
-        $checkSql = " select * from  `or_category_tbl` where `category_name` = '$cate_name'  and `category_id` != '$cate_id' ";
-       }
-    
-        
+    if(isset($_POST['submit'])){	
+        $cate_name = $conn->real_escape_string($_POST['cate_name']);
+        $order_number = $conn->real_escape_string($_POST['order_number']);
+        $cate_status = $conn->real_escape_string($_POST['category_status']);
+        $add_on = date(`y-m-d h:i:s`);
+        if($cate_id == ''){
+            $checkSql = "select * from  `or_category_tbl` where `category_name` = '$cate_name' ";
+        }else{
+            $checkSql = " select * from  `or_category_tbl` where `category_name` = '$cate_name'  and `category_id` != '$cate_id' ";
+        }
         $checkMySql = $conn->query($checkSql) or die('error in sql table');
-        if($check = $checkMySql->num_rows >0){?>
-            <script>alert('category alery exist');</script>
-        <?php }else{
+            if($check = $checkMySql->num_rows >0){
+                $msg = "Category is already exist";
+            }else{
         
                if($cate_id == ''){
 
-                    $cate_sql = " INSERT INTO `or_category_tbl`(`category_name`,`order_number`,`category_status`, `add_on`) VALUES ('$cate_type','$order_number','$cate_status','$add_on')";
+                    $cate_sql = " INSERT INTO `or_category_tbl`(`category_name`,`order_number`,`category_status`, `add_on`) VALUES ('$cate_name','$order_number','$cate_status','$add_on')";
                         $mysql = $conn->query($cate_sql);
                 }else{
 
@@ -56,12 +54,9 @@ if(isset($_POST['submit'])){
                         redirect('addCate.php');
                     }
         }
-    }    }   
-
-
-
+    }   
 ?>	
-        <!-- Page Content -->
+    <!-- Page Content -->
     <div id="page-wrapper"> 
         <div class="container" style="margin-top:100px;">
             <div class="row">
@@ -77,7 +72,7 @@ if(isset($_POST['submit'])){
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label label_id">Cate Name</label>
                                         <div class="col-sm-10">
-                                        <input type= "text" name = "cate_name" class="form-control" placeholder="Please enter category name" required  value = "<?php echo $cate_name; ?>">
+                                        <input type= "text" name = "cate_name" class="form-control" placeholder="Please enter category name" required  value = "<?php echo $cate_name; ?>"><span id = "error_msg"><?php echo $msg;?></span>
                                         </div>    
                                     </div>
                                     <div class="form-group row">

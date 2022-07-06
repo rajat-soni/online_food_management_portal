@@ -1,73 +1,64 @@
 <?php require "adminHeader.php";
 	 require '../dbConfig/dbConfig.php';
-    //  require '../customFunction/function.php';?>
+    ?>
     <div id="page-wrapper">
         <?php
      
-    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['cate_id']) && $_GET['cate_id']>0){
+    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['user_id']) && $_GET['user_id'] > 0 ){
         $type = $_GET['type'];
-        $id = $_GET['cate_id'];
-        $sql = " DELETE FROM `or_category_tbl` WHERE `category_id` = '$id' ";
-        $mysql = $conn->query($sql) or die('error in sql');
+        $id = $_GET['user_id'];
+        $row = array();
+        $sql = " DELETE FROM `or_user_tbl` WHERE `user_id` = '$id' ";
+        $mysql = $conn->query($sql) or die('error in sql delet table');
         if($mysql->num_rows > 0){
-            redirect('showCate.php');
+            redirect('showUser.php');
         }
     
   
     } 
-    // if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['cate_id']) && $_GET['cate_id']>0){
-
-    //     $type = $_GET['type'];
-    //     $id = $_GET['cate_id'];
-    //     $sql = " DELETE FROM `or_category_tbl` WHERE `category_id` = '$id' ";
-    //     $mysql = $conn->query($sql) or die('error in sql');
-    //     if($check = $mysql->num_rows > 0){
-    //        redirect('showCate.php');
-    //     }
-    // }
-    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['category_id']) && $_GET['category_id']>0){
+ 
+    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['users_id']) && $_GET['users_id']>0){
     
         $type = $_GET['type'];
-        $cate_id = $_GET['category_id'];
+        $id = $_GET['users_id'];
         if($type == "active" || $type == "deactive"){
            
            $status = 1;
             if($type == "deactive"){
                 $status = 0; 
             }
-               $sql = " UPDATE `or_category_tbl` SET `category_status`= '$status'  WHERE `category_id` = '$cate_id' ";
-            $mysql = $conn->query($sql) or die("sql not working");
-          redirect('showCate.php');
+               $updatesql = " UPDATE `or_user_tbl` SET `user_status`= '$status'  WHERE `user_id` = '$id' ";
+            $mysql = $conn->query($updatesql) or die("sql not working activate and deactivate");
+            redirect('showUser.php');
         }else{
             echo "type not get";
         }
     }
 
 
-    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['cate_id']) && $_GET['cate_id']>0){
+    if(isset($_GET['type']) && $_GET['type'] !== '' && isset($_GET['user_id']) && $_GET['user_id']>0){
         $type = $_GET['type'];
-        $id = $_GET['cate_id'];
-        $sql = " SELECT * FROM  `or_category_tbl` WHERE `category_id` = '$id' ";
-        $mysql = $conn->query($sql) or die('error in sql');
+        $id = $_GET['user_id'];
+        $sql = " SELECT * FROM  `or_user_tbl` WHERE `user_id` = '$id' ";
+        $mysql = $conn->query($sql) or die('error in sql in feaching data');
         if($mysql->num_rows > 0){
-            ?>
             
-            <?php 
         }
     }
     
   
 
 
-$query = "SELECT * FROM `or_category_tbl` order by `order_number` ";
-$mysql = $conn->query($query) or die('error in sql table');
+$query = " SELECT * FROM  `or_user_tbl` ";
+$mysql = $conn->query($query) or die('error in sql table fetch data');
 $row = array();
+
 ?>
 
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Category Master &nbsp; &nbsp;<span style="float:right; background-color:light; padding-button:5px;"><a href="addCate.php" class="btn btn-lg btn-primary">Add Category</a><span></h1>
+                            <h1 class="page-header">User Master &nbsp; &nbsp;<span style="float:right; background-color:light;"><a href="addBoys.php" class="btn btn-lg btn-primary">Add  User</a><span></h1>
                         </div>
                       
                     </div>
@@ -76,7 +67,7 @@ $row = array();
                         <div class="col-lg-12">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                               Category  Table
+                            Delivery Boys Master
                                 </div>
                                 
                                 <!-- /.panel-heading -->
@@ -86,10 +77,10 @@ $row = array();
                                             <thead>
                                                 <tr>
                                                     <th>S.No</th>
-                                                    <th>Cate_name</th>
-                                                    <th>Order_no</th>
-                                                    <!-- <th>Cate_status</th> -->
-                                                    <!-- <th>Add_on</th> -->
+                                                    <th>Name</th>
+                                                    <th>Mobile</th>
+                                                    <th>Email</th>
+                                                    <th>Password</th> 
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -100,20 +91,22 @@ $row = array();
                                                         $row = $result;?>
                                                        
                                                 <tr class="odd gradeX">
-                                                <td style= "width:20%;"><?php echo $i;?></td>
-                                                    <td style= "width:30%;"><?php echo $row['category_name'];?></td>
-                                                    <td style= "width:30%;"><?php echo $row['order_number'];?></td>
+                                                <td style= "width:10%;"><?php echo $i;?></td>
+                                                    <td style= "width:20%;"><?php echo $row['user_name'];?></td>
+                                                    <td style= "width:20%;"><?php echo $row['user_mobile'];?></td>
+                                                    <td style= "width:20%;"><?php echo $row['user_email'];?></td>
+                                                    <td style= "width:15%;"><?php echo $row['user_password'];?></td>
                                                     
-                                                    <td class="center " style= "width:20%;"><a href= "?cate_id=<?php echo $row['category_id'];?>&type= delete"><i class="fa fa-fw" aria-hidden="true" title="Copy to use close" style = "font-size:20px;"></i></a> &nbsp;
+                                                    <td class="center " style= "width:40%;"><a href= "addUser.php?user_id=<?php echo $row['user_id'];?>"><i class="fa fa-fw" aria-hidden="true" title="Copy to use close" style = "font-size:20px;"></i></a> &nbsp;
 
-                                                  <a href= "addCate.php?category_id=<?php echo $row['category_id'];?>"><i class="fa fa-fw" aria-hidden="true" title="Copy to use pencil-square-o" style = "font-size:20px;"></i></a> &nbsp;
+                                                  <a href= "addUser.php?user_id=<?php echo $row['user_id'];?>"><i class="fa fa-fw" aria-hidden="true" title="Copy to use pencil-square-o" style = "font-size:20px;"></i></a> &nbsp;
                                                   
-                                                   <?php if($row['category_status'] == 1){?>
+                                                   <?php if($row['user_status'] == 1){?>
 
-                                                   <a href= "?category_id=<?php echo $row['category_id'];?>&type=deactive"><i class="fa fa-fw" aria-hidden="true" title="Make it deactive" style="font-size:20px;"></i></a> &nbsp;
+                                                   <a href= "?user_id=<?php echo $row['user_id'];?>&type=deactive"><i class="fa fa-fw" aria-hidden="true" title="Make it deactive" style="font-size:20px;"></i></a> &nbsp;
                                                   
                                                   <?php }else{?>
-                                                   <a href= "?category_id=<?php echo $row['category_id'];?>&type=active" class=""><i class="fa fa-fw" aria-hidden="true" title="Make is active" style="font-size:20px;" ></i></a></span>
+                                                   <a href= "?user_id=<?php echo $row['user_id'];?>&type=active" class=""><i class="fa fa-fw" aria-hidden="true" title="Make is active" style="font-size:20px;" ></i></a></span>
                                                   
                                                 <?php }?>
                                                 </td>
@@ -144,7 +137,6 @@ $row = array();
                 <!-- /.container-fluid -->
             </div>
             <!-- /#page-wrapper -->
-
         </div>
         <!-- /#wrapper -->
 <?php require "adminFooter.php";?>

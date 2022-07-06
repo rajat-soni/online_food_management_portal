@@ -47,11 +47,7 @@
                             redirect('addBoys.php'); 
                         }
                     }
-         
-        
-        
-                } 
-                
+            } 
 ?>
 
 

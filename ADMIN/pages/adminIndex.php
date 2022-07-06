@@ -1,5 +1,6 @@
 
 <?php require "adminHeader.php";
+ require '../dbConfig/dbConfig.php';
 if(!isset($_SESSION['is_ADMIN_LOGIN'])){
        redirect('login.php');
  }	 
@@ -9,7 +10,7 @@ if(!isset($_SESSION['is_ADMIN_LOGIN'])){
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Dashboard</h1>
+                            <h1 class="page-header">Order Management Online Food Portal [OMOFP]</h1>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>
@@ -20,7 +21,7 @@ if(!isset($_SESSION['is_ADMIN_LOGIN'])){
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <i class="fa fa-comments fa-5x"></i>
+                                            <i class="fa fa-user fa-5x"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
                                             <div class="huge">26</div>

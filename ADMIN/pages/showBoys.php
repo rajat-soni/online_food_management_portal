@@ -58,7 +58,7 @@ $row = array();
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Deleivery Boys Master &nbsp; &nbsp;<span style="float:right; background-color:light;"><a href="addBoys.php">Add  Delivery Boys</a><span></h1>
+                            <h1 class="page-header">Deleivery Boys Master &nbsp; &nbsp;<span style="float:right; background-color:light;"><a href="addBoys.php" class="btn btn-lg btn-primary">Add  Delivery Boys</a><span></h1>
                         </div>
                       
                     </div>

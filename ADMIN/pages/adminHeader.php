@@ -1,6 +1,7 @@
 <?php 
 session_start(); 
 include '../customFunction/function.php';
+
 // if(!isset($_SESSION['is_ADMIN_LOGIN'])){
 //    redirect('login.php');
 // }
@@ -16,7 +17,7 @@ include '../customFunction/function.php';
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Startmin - Bootstrap Admin Theme</title>
+        <title>Order Management Online Food Portal [OMOFP]</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -51,7 +52,7 @@ include '../customFunction/function.php';
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Startmin - Bootstrap Admin Theme</title>
+        <title>Order Management Online Food Portal [OMOFP]</title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -79,7 +80,7 @@ include '../customFunction/function.php';
             <!-- Navigation -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="adminIndex.php">Dashboard</a>
+                    <a class="navbar-brand" href="adminIndex.php">[OMOFP]</a>
                 </div>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -90,7 +91,7 @@ include '../customFunction/function.php';
                 </button>
 
                 <ul class="nav navbar-nav navbar-left navbar-top-links">
-                    <li><a href="#"><i class="fa fa-home fa-fw"></i>OrderManagementPortal</a></li>
+                    <li><a href="#"><i class="fa fa-home fa-fw"></i>Order Management Online Food Portal</a></li>
                 </ul>
 
                 <ul class="nav navbar-right navbar-top-links">
@@ -204,7 +205,7 @@ include '../customFunction/function.php';
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-fw" aria-hidden="true" title="Copy to use angle-double-down"></i>CategoryMaster<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-fw" aria-hidden="true" title="Copy to use list"></i>CategoryMaster<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="addCate.php">addCategory</a>
@@ -220,6 +221,20 @@ include '../customFunction/function.php';
                             </li>
                             <li>
                                 <a href="forms.php"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw" aria-hidden="true" title="Copy to use users"></i>&nbsp;User Master<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="addUser.php">Add New User</a>
+                                    </li>
+                                    <li>
+                                        <a href="showUser.php">Show Users</a>
+                                    </li>
+                                   
+                                   
+                                </ul>
+                                <!-- /.nav-second-level -->
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
@@ -246,7 +261,7 @@ include '../customFunction/function.php';
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i>Delivery Boy Master<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-fw" aria-hidden="true" title="Copy to use automobile"></i>&nbsp;Delivery Boy Master<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
                                         <a href="addBoys.php">Add New boys</a>
@@ -259,6 +274,22 @@ include '../customFunction/function.php';
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
+                            <li>
+                                <a href="#"><i class="fa fa-fw" aria-hidden="true" title="Copy to use leaf"></i>&nbsp;Dish Master<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="addDish.php">Add Dishes</a>
+                                    </li>
+                                    <li>
+                                        <a href="showDish.php">Show Dishes</a>
+                                    </li>
+                                   
+                                   
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                           
+                           
                             <li class="active">
                                 <!-- <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a> -->
                                 <ul class="nav nav-second-level">
