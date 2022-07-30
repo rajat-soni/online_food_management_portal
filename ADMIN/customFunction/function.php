@@ -2,7 +2,7 @@
 function getErorr($debug){
     echo"<pre>";
     print_r($debug);
- 
+    echo "</pre>";
 }
 
 function getErorrR($debug){

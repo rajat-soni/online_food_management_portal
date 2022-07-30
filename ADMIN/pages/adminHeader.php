@@ -1,9 +1,23 @@
 <?php 
 session_start(); 
 include '../customFunction/function.php';
-
+require 'constant.php';
 // if(!isset($_SESSION['is_ADMIN_LOGIN'])){
 //    redirect('login.php');
+// }
+//getErorrR($_SERVER);
+// $url = $_SERVER['REQUEST_URI'];
+// $path_str = explode("/",$url);
+// $path_url = $path_str[count($path_str)-1];
+// // getErorrR($path_url);
+// $pageTitle = "";
+
+// if($path_url == "" || $path_url == ""){
+// $pageTitle = "Dashboard";
+// }else if($path_url == "addDish.php" || $path_url == "showDish.php"){
+//     $pageTitle = "Dish";
+// }else{
+//     echo "not get url";
 // }
 ?>
 
@@ -52,7 +66,7 @@ include '../customFunction/function.php';
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Order Management Online Food Portal [OMOFP]</title>
+        <title></title>
 
         <!-- Bootstrap Core CSS -->
         <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -285,6 +299,18 @@ include '../customFunction/function.php';
                                     </li>
                                    
                                    
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Coupan Master<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="addCoupan.php">Add Counpan</a>
+                                    </li>
+                                    <li>
+                                        <a href="showCoupan.php">Show Coupan</a>
+                                    </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>

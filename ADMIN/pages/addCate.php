@@ -2,7 +2,7 @@
 
 <?PHP include "adminHeader.php";
 require '../dbConfig/dbConfig.php';
-print_r($_SERVER);
+// print_r($_SERVER);
 $cate_name  = '';
 $order_number = '';
 $cate_status = '';
@@ -78,7 +78,7 @@ if(isset($_GET['category_id']) && $_GET['category_id'] > 0){
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label">Order no</label>
                                         <div class="col-sm-10">
-                                        <input type= "text" name = "order_number" class="form-control" placeholder="Please enter order numfer" required value="<?php echo $order_number ;?>">
+                                        <input type= "text" name = "order_number" class="form-control" placeholder="Please enter order number" required value="<?php echo $order_number ;?>">
                                         </div>
                                     </div>
                                     <div class="form-group row">
